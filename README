@@ -1,0 +1,14 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=169
+
+Just as the name implies, this script will add auto-complete functionality for email addresses in vim. This is very handy for those who use vim with mutt. Enjoy.
+
+For those of you who would rather just look at the code through your browser:
+http://www.itodd.org/~itodd/email.vim
+
+Thanks to Luc Hermitte for writing a much more advanced autocomplete script [ vimscript #46 ] which helped me create this one.
+
+-- 
+Todd Boland
+http://www.itodd.org/
+
+:wq
