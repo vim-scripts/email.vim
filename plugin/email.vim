@@ -11,12 +11,12 @@ let s:addresses = '~/.addresses'
 
 " Function to snag the current string under the cursor
 function! SnagString( line )
-	" Set line and set column number
+
+	" Set column number
 	let column =	col('.')-1
 	
 	" Split up line		line	start	end
 	let begining = strpart(	a:line,	0, 	column)
-	let ending = strpart(	a:line,	column,	strlen(a:line))
 
 	" Setup string		source		regex
 	let string = matchstr(	begining,	'\S*$')
@@ -49,14 +49,17 @@ function! TabComplete()
 		
 		" Fetch current string under cursor
 		let string = SnagString( line )
-		if strlen(string) > 0
+		let string_length = strlen(string)
+		if string_length > 0
 			
 			" Try and match that string to an address
 			let address = MatchAddress( string )
-			if strlen(address) > 0
+			let address_length = strlen( address )
+			if address_length > 0
 
 				" Hot dang, we've done and got ourselves a match!
-				let paste = strpart( address, strlen(string), strlen( address) )
+				let paste = strpart( address, string_length, address_length )
+				" Convert to lower, remove trailing \n, return
 				return substitute(tolower(paste),"\n","","g")
 			else
 
